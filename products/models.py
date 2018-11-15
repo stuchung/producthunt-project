@@ -11,8 +11,8 @@ class Product(models.Model):
     url = models.TextField(blank=True)
     pub_date = models.DateTimeField(blank=True, default=datetime.datetime.now)
     votes_total = models.IntegerField(blank=True, null=True)
-    product_pic = VersatileImageField(upload_to='product_pics/', height_field="150", width_field="150")
-    icon_pic = VersatileImageField(upload_to="icon_pics/", height_field="50", width_field="50")
+    product_pic = VersatileImageField(upload_to='product_pics/')
+    icon_pic = VersatileImageField(upload_to="icon_pics/")
     body = models.TextField(default=1)
     hunter = models.ForeignKey(User ,on_delete=models.CASCADE)
 
