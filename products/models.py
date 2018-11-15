@@ -1,19 +1,20 @@
 from django.db import models
 from django.contrib.auth.models import User
 import datetime
+from django.utils import timezone
 from versatileimagefield.fields import VersatileImageField
 
 # Create your models here.
 
 class Product(models.Model):
     """Django data model Product"""
-    title = models.CharField(blank=True, max_length=100)
+    title = models.CharField(max_length=100)
     url = models.TextField(blank=True)
-    pub_date = models.DateTimeField(blank=True, default=datetime.datetime.now)
-    votes_total = models.IntegerField(blank=True, null=True)
+    pub_date = models.DateTimeField(default=timezone.now)
+    votes_total = models.IntegerField(default=1)
     product_pic = VersatileImageField(upload_to='product_pics/')
     icon_pic = VersatileImageField(upload_to="icon_pics/")
-    body = models.TextField(default=1)
+    body = models.TextField(blank=True)
     hunter = models.ForeignKey(User ,on_delete=models.CASCADE)
 
     class Meta:
@@ -22,7 +23,7 @@ class Product(models.Model):
 
 
     def __str__(self):
-        return str(self.title)
+        return self.title
 
     def summary(self):
         return self.body[:70]

@@ -33,8 +33,9 @@
             <input type="hidden"/>
           </form>
           {% else %}
-          <a class="nav-item nav-link active" href="{% url 'accounts:signup' %}"> Sign Up</a>
-          <a class="nav-item nav-link" href="{% url 'accounts:login' %}">Login</a>
+          <a class="nav-item nav-link muted" href="{% url 'accounts:signup' %}"> Sign Up</a>
+          <a class="nav-item nav-link active" href="{% url 'accounts:login' %}">Login</a>
+          <a class="nav-item nav-link muted" href="{% url 'products:create' %}">Create Product</a>
           {% endif %}
 
         </div>
