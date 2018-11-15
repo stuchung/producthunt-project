@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<hr>
+<center><h4>This is the Signup page.</h4>{{ time }}</center>
+<hr>
+<div class="form-group">
+  <form action="{% url 'accounts:signup' %}" method="POST">
+    {% csrf_token %}
+    Username:
+    <br>
+    <input type="text" name="username"/>
+    <br>
+    Password:
+    <br>
+    <input type="password" name="password1"/>
+    <br>
+    Confirm Password:
+    <br>
+    <input type="password" name="password2"/>
+    <br>
+    <br>
+    <input class='btn btn-primary' type="submit" name="submit" value="Sign Up">
+  </form>
+</div>
+{% if error %}
+<p>{{error}}</p>
+<br>
+{% endif %}
+{% endblock %}

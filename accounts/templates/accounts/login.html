@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<hr>
+<center><h4>This the Login page.</h4>{{ time }}</center>
+<hr>
+<div class="form-group">
+  <form action="{% url 'accounts:login' %}" method="POST">
+    {% csrf_token %}
+    Username:
+    <br>
+    <input type="text" name="username"/>
+    <br>
+    Password:
+    <br>
+    <input type="password" name="password"/>
+    <br>
+    <br>
+    <input class='btn btn-primary' type="submit" name="submit" value="Login">
+  </form>
+</div>
+{% if error %}
+<p>{{error}}</p>
+<br>
+{% endif %}
+{% endblock %}
