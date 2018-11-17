@@ -58,7 +58,7 @@ ROOT_URLCONF = 'producthunt.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['producthunt/templates','accounts/templates','media/'],
+        'DIRS': ['producthunt/templates','accounts/templates','media/','products/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

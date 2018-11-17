@@ -7,9 +7,10 @@ from . models import Product
 
 def home(request):
     time = datetime.datetime.today()
-    return render(request, 'products/home.html',{'time':time})
+    products = Product.objects.all()
+    return render(request, 'products/home.html',{'time':time , 'products':products})
 
-@login_required
+@login_required(login_url='/accounts/signup')
 def create(request):
     time = datetime.datetime.today()
     if request.method == 'POST':
@@ -36,3 +37,11 @@ def create(request):
 def detail(request,product_id):
     pd = get_object_or_404(Product,pk=product_id)
     return render(request,'products/detail.html',{'pd':pd})
+
+@login_required(login_url='/accounts/signup')
+def upvote(request, product_id):
+    if request.method == 'POST':
+        pd = get_object_or_404(Product,pk=product_id)
+        pd.votes_total += 1
+        pd.save()
+        return redirect('/products/' + str(pd.id))
