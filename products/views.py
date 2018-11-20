@@ -14,9 +14,9 @@ def home(request):
 def create(request):
     time = datetime.datetime.today()
     if request.method == 'POST':
-        if request.POST['title'] and request.POST['body'] and request.POST['url'] and request.FILES['icon_pic'] and request.FILES['product_pic']:
+        if request.POST['name'] and request.POST['body'] and request.POST['url'] and request.FILES['icon_pic'] and request.FILES['product_pic']:
             product = Product()
-            product.title = request.POST['title']
+            product.name = request.POST['name']
             product.body = request.POST['body']
             if request.POST['url'].startswith('http://') or request.POST['url'].startswith('https://'):
                 product.url = request.POST['url']
@@ -24,7 +24,7 @@ def create(request):
                 product.url = 'http://' + request.POST['url']
             product.icon_pic = request.FILES['icon_pic']
             product.product_pic = request.FILES['product_pic']
-            product.title = datetime.datetime.now()
+            product.name = datetime.datetime.now()
             product.hunter = request.user
             product.save()
             return redirect('/products/' + str(product.id))

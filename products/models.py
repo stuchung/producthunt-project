@@ -8,7 +8,8 @@ from versatileimagefield.fields import VersatileImageField
 
 class Product(models.Model):
     """Django data model Product"""
-    title = models.CharField(blank=True, max_length=100)
+    name = models.CharField(blank=True, max_length=100)
+
     url = models.TextField(blank=True)
     pub_date = models.DateTimeField(default=timezone.now)
     votes_total = models.IntegerField(default=1)
@@ -26,7 +27,7 @@ class Product(models.Model):
     # def __str__(self):
     #     return self.title
     def __str__(self):
-        return (self.title)
+        return (self.name)
 
     def summary(self):
         return self.body[:70]

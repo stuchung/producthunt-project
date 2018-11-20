@@ -10,8 +10,8 @@
     <img src="{{products.icon_pic.url}}" class="img-fluid">
   </div>
   <div class="col-6" onclick="window.location='{% url 'products:detail' products.id %}';" style="cursor: pointer;">
-    <h2>{{products.url}}</h2>
-    <h2>{{products.summary}}</h2>
+    <h2> {{products.name}}</h2>
+    <h2> {{products.summary}}</h2>
   </div>
   <a href="javascript:{document.getElementById('upvote {{products.id}}').submit()}"><button class='btn btn-primary btn-lg btn-block' type="button" name="button"><span class="oi oi-caret-top"></span> Upvote {{products.votes_total}}</button></a>
 </div>

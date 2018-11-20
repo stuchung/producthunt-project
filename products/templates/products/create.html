@@ -8,7 +8,7 @@
     {% csrf_token %}
     Title:
     <br>
-    <input type="text" name="title"/>
+    <input type="text" name="name"/>
     <br>
     Description:
     <br>
@@ -29,7 +29,10 @@
     <br>
     <input class='btn btn-primary' type="submit" name="submit" value="Create Product">
   </form>
+  <br><br><br><br><br><br>
 </div>
+
+
 {% if error %}
 <p>{{error}}</p>
 <br>
